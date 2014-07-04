@@ -6,7 +6,11 @@ public class loadScene : MonoBehaviour {
     static public int nbPiste;
     static public GameObject[,] musiquePistes;
     static public GameObject[,] imagePisteAssigned;
+    static public GameObject imagePisteAssignedRythm;
     public GameObject casePiste;
+    public GameObject caseRythmPrefabs;
+    static public GameObject caseRythm;
+
 
 	// Use this for initialization
 	void Start () {
@@ -18,19 +22,14 @@ public class loadScene : MonoBehaviour {
         {
             for (int j = 0; j < 6; j++)
             {
-                GameObject g = (GameObject)Instantiate(casePiste, new Vector3((placementPiste[j]), (float)(i * -1 - 0.35), 0), Quaternion.identity);
+                GameObject g = (GameObject)Instantiate(casePiste, new Vector3((placementPiste[j]), (float)(i * -1 - 1.35), 0), Quaternion.identity);
                 g.GetComponent<PisteCaseScript>().piste = i;
                 g.GetComponent<PisteCaseScript>().section = j;
                 musiquePistes[i, j] = g;
             }
         }
-	}
 
-    // Update is called once per frame
-    void Update()
-    {
-	
-	}
-
-    
+        GameObject grandeCase= (GameObject)Instantiate(caseRythmPrefabs, new Vector3((float)-0.10, (float)(- 0.35), 0), Quaternion.identity);
+        caseRythm = grandeCase;
+	}    
 }

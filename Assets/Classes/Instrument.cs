@@ -34,6 +34,14 @@ namespace Assets
             set { emplacementTexture = value; }
         }
 
+        private bool rythmic;
+
+        public bool Rythmic
+        {
+            get { return rythmic; }
+            set { rythmic = value; }
+        }
+
         // autre données relatives au jeu
     }
 }

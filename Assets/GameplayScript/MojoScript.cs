@@ -18,12 +18,19 @@ public class MojoScript : MonoBehaviour {
 	void OnMouseDown(){
 
 		if (renderer.material.color == Color.red) {
-						renderer.material.color = Color.green;
-						light.color = Color.green;
-				} else {
-						renderer.material.color = Color.red;
-						light.color = Color.red;
-				}
+			renderer.material.color = Color.green;
+			light.color = Color.green;
+        }
+        else if (renderer.material.color == Color.green)
+        {
+            renderer.material.color = Color.blue;
+            light.color = Color.blue;
+        }
+        else
+        {
+            renderer.material.color = Color.red;
+            light.color = Color.red;
+        }
 
 	}
 }

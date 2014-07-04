@@ -38,28 +38,23 @@ public class ballScript : MonoBehaviour {
 
 	void GetTouches(){
 
-
-
-
 		foreach (Touch touch in Input.touches) {
 
-
-
-			if (touch.phase != TouchPhase.Ended && touch.phase != TouchPhase.Canceled) {
+    		if (touch.phase != TouchPhase.Ended && touch.phase != TouchPhase.Canceled) {
 						
-						Ray ray = Camera.main.ScreenPointToRay (Input.GetTouch (0).position);
-						RaycastHit hit;
+				Ray ray = Camera.main.ScreenPointToRay (Input.GetTouch (0).position);
+				RaycastHit hit;
 		
-						if (Physics.Raycast (ray, out hit)) {
+				if (Physics.Raycast (ray, out hit)) {
 								
-								if (hit.collider.gameObject == this.gameObject) {
+					if (hit.collider.gameObject == this.gameObject) {
 										
-										j = 50;
-										animation.Stop ();
-								} 
-						}
+						j = 50;
+						animation.Stop ();
+                        ScoreScript.addMultiplicateur();
+					} 
 				}
-
+			}
 		}
 	}
 

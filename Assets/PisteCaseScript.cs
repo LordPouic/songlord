@@ -26,17 +26,21 @@ public class PisteCaseScript : MonoBehaviour {
 
             if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
             {
+                //touch delete vers le haut
                 Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
                 if ( ( (Mathf.Abs(touchDeltaPosition.x) < touchDeltaPosition.y) || touchDeltaPosition.y > 5) )
                 {
                     audio.clip = null;
                     renderer.materials[0] = null;
-                    renderer.material.color = Color.white;
+                    if (GameObject.Find("BoutonMenu").GetComponent<BoutonMenuScript>().Instrument1.Rythmic)
+                        renderer.material.color = Color.gray;
+                    else renderer.material.color = Color.white;
                     affected = false;
                     moveBegin = false;
                     Destroy(loadScene.imagePisteAssigned[piste, section]);
                 }
 
+                //touch vers la droite
                 else if (touchDeltaPosition.x > 6 && section <5)
                 {
                     loadScene.musiquePistes[piste, section + 1].audio.clip = audio.clip;
@@ -50,11 +54,13 @@ public class PisteCaseScript : MonoBehaviour {
 
                     GameObject imageLoop = prefabsImage;
                     imageLoop.GetComponent<SpriteRenderer>().sprite = loadScene.imagePisteAssigned[piste, section].GetComponent<SpriteRenderer>().sprite;
-                    GameObject g = Instantiate(imageLoop, new Vector3(placementPiste[section+1],(float)(piste * -1 - 0.35), 0), Quaternion.identity) as GameObject;
+                    GameObject g = Instantiate(imageLoop, new Vector3(placementPiste[section+1],(float)(piste * -1 - 1.35), 0), Quaternion.identity) as GameObject;
                     
                     loadScene.imagePisteAssigned[piste, section + 1] = g;
                    
                 }
+
+                    //touch vers la gauche
                 else if (touchDeltaPosition.x < -6 && section >0)
                 {
                     loadScene.musiquePistes[piste, section - 1].audio.clip = audio.clip;
@@ -68,7 +74,7 @@ public class PisteCaseScript : MonoBehaviour {
 
                     GameObject imageLoop = prefabsImage;
                     imageLoop.GetComponent<SpriteRenderer>().sprite = loadScene.imagePisteAssigned[piste, section].GetComponent<SpriteRenderer>().sprite;
-                    GameObject g = Instantiate(imageLoop, new Vector3(placementPiste[section - 1], (float)(piste * -1 - 0.35), 0), Quaternion.identity) as GameObject;
+                    GameObject g = Instantiate(imageLoop, new Vector3(placementPiste[section - 1], (float)(piste * -1 - 1.35), 0), Quaternion.identity) as GameObject;
                     loadScene.imagePisteAssigned[piste, section - 1] = g;
                 }
             }

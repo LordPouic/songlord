@@ -10,3 +10,15 @@ C:\Users\LordPouic\Documents\SongLord2\obj\Debug\Assembly-CSharp.dll
 C:\Users\LordPouic\Documents\SongLord2\obj\Debug\Assembly-CSharp.pdb
 C:\Users\LordPouic\Documents\SongLord2\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
 C:\Users\LordPouic\Documents\SongLord2\Temp\bin\Debug\TouchScript.dll
+C:\Git\songlord\songlord\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+C:\Git\songlord\songlord\obj\Debug\Assembly-CSharp.dll
+C:\Git\songlord\songlord\obj\Debug\Assembly-CSharp.pdb
+C:\Git\songlord\songlord\Temp\bin\Debug\Assembly-CSharp.dll
+C:\Git\songlord\songlord\Temp\bin\Debug\Assembly-CSharp.pdb
+C:\Git\songlord\songlord\Temp\bin\Debug\UnityEngine.dll
+C:\Git\songlord\songlord\Temp\bin\Debug\TouchScript.dll
+C:\Git\songlord\songlord\Temp\bin\Debug\UnityEditor.dll
+C:\Git\songlord\songlord\Temp\bin\Debug\Mono.Cecil.dll
+C:\Git\songlord\songlord\Temp\bin\Debug\nunit.framework.dll
+C:\Git\songlord\songlord\Temp\bin\Debug\Unity.DataContract.dll
+C:\Git\songlord\songlord\Temp\bin\Debug\ICSharpCode.NRefactory.dll

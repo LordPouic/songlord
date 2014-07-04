@@ -28,8 +28,12 @@ public class TileScript : MonoBehaviour {
 			
 			if (color == "red")
 				renderer.material.color = Color.red;
-			if (color == "green")
-				renderer.material.color = Color.green;
+            if (color == "green")
+                renderer.material.color = Color.green;
+            if (color == "blue")
+                renderer.material.color = Color.blue;
+            if (color == "yellow")
+                renderer.material.color = Color.yellow;
 	}
 
 	void OnCollisionEnter(Collision col){
@@ -43,15 +47,28 @@ public class TileScript : MonoBehaviour {
 				particleSystem.Play();
 				renderer.enabled = false; // detach particle system
 				Destroy(particleSystem.gameObject, 0.5f);
+                ScoreScript.addPoint();
 
 			} else if (col.gameObject.renderer.material.color == Color.green && color == "green"){
 
 				particleSystem.Play();
 				renderer.enabled = false; // detach particle system
 				Destroy(particleSystem.gameObject, 0.5f);
+                ScoreScript.addPoint();
 				//Destroy(gameObject);		
-			
-			} else {
+
+            }else if (col.gameObject.renderer.material.color == Color.blue && color == "blue")
+            {
+
+                particleSystem.Play();
+                renderer.enabled = false; // detach particle system
+                Destroy(particleSystem.gameObject, 0.5f);
+                ScoreScript.addPoint();
+                //Destroy(gameObject);		
+
+            }
+            else
+            {
 				check = false;
 			}
 		}

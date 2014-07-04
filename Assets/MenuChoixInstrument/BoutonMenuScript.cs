@@ -7,6 +7,12 @@ public class BoutonMenuScript : MonoBehaviour {
 
     public GameObject menu;
     private Instrument instrument;
+
+    internal Instrument Instrument1
+    {
+        get { return instrument; }
+        set { instrument = value; }
+    }
     public List<GameObject> loopList;
 
     void Start()
@@ -48,6 +54,33 @@ public class BoutonMenuScript : MonoBehaviour {
             GameObject g = (GameObject)Instantiate(boutonLoop, new Vector3((float)i * 2 - 4, (float)4.2, 0), Quaternion.identity);
             loopList.Add(g);
 
+        }
+
+        if (instrument.Rythmic)
+        {
+            for (int i = 0; i < loadScene.nbPiste; i++)
+            {
+                for (int j = 0; j < 6; j++)
+                {
+                    if (loadScene.musiquePistes[i,j].renderer.material.color != Color.green)
+                        loadScene.musiquePistes[i, j].renderer.material.color = Color.gray;
+                }
+            }
+            if (loadScene.caseRythm.renderer.material.color != Color.green)
+                loadScene.caseRythm.renderer.material.color = Color.white;
+        }
+        else
+        {
+            for (int i = 0; i < loadScene.nbPiste; i++)
+            {
+                for (int j = 0; j < 6; j++)
+                {
+                    if (loadScene.musiquePistes[i, j].renderer.material.color != Color.green)
+                        loadScene.musiquePistes[i, j].renderer.material.color = Color.white;
+                }
+            }
+            if (loadScene.caseRythm.renderer.material.color != Color.green)
+                loadScene.caseRythm.renderer.material.color = Color.gray;
         }
     }
 }

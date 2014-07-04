@@ -50,24 +50,44 @@ public class DragAndDrop : MonoBehaviour {
                         this.transform.position.y <= loadScene.musiquePistes[i, j].transform.position.y +0.5)
                     {
                         this.audio.Stop();
-                        loadScene.musiquePistes[i, j].audio.clip = this.audio.clip;
-                        loadScene.musiquePistes[i, j].renderer.materials[0]= null;
-                        loadScene.musiquePistes[i, j].renderer.material.color = Color.green;
-                        loadScene.musiquePistes[i, j].GetComponent<PisteCaseScript>().affected = true;
+                        if (loadScene.musiquePistes[i, j].renderer.material.color != Color.gray && loadScene.musiquePistes[i, j].renderer.material.color != Color.green)
+                        {
+                            loadScene.musiquePistes[i, j].audio.clip = this.audio.clip;
+                            loadScene.musiquePistes[i, j].renderer.materials[0] = null;
+                            loadScene.musiquePistes[i, j].renderer.material.color = Color.green;
+                            loadScene.musiquePistes[i, j].GetComponent<PisteCaseScript>().affected = true;
 
-                        if (loadScene.imagePisteAssigned[i, j] != null)
-                            Destroy(loadScene.imagePisteAssigned[i, j]);
-                        float[] placementPiste = { (float)-6.6, (float)-3.96, (float)-1.35, (float)1.27, (float)3.88, (float)6.52 };
-                        GameObject imageLoop = prefabsImage;
-                        imageLoop.GetComponent<SpriteRenderer>().sprite = this.GetComponent<SpriteRenderer>().sprite;
-                        GameObject g = Instantiate(imageLoop, new Vector3(placementPiste[j], (float)(i * -1 - 0.35), 0), Quaternion.identity) as GameObject;
-                        loadScene.imagePisteAssigned[i, j] = g;
-                        Debug.Log(loadScene.imagePisteAssigned[i,j].ToString());
+                            if (loadScene.imagePisteAssigned[i, j] != null)
+                                Destroy(loadScene.imagePisteAssigned[i, j]);
+
+                            float[] placementPiste = { (float)-6.6, (float)-3.96, (float)-1.35, (float)1.27, (float)3.88, (float)6.52 };
+                            GameObject imageLoop = prefabsImage;
+                            imageLoop.GetComponent<SpriteRenderer>().sprite = this.GetComponent<SpriteRenderer>().sprite;
+                            GameObject g = Instantiate(imageLoop, new Vector3(placementPiste[j], (float)(i * -1 - 1.35), 0), Quaternion.identity) as GameObject;
+                            loadScene.imagePisteAssigned[i, j] = g;
+                            Debug.Log(loadScene.imagePisteAssigned[i, j].ToString());
+                        }
                         
                     }
                 }
             }
 
+            if (this.transform.position.y >= -0.85 &&
+                this.transform.position.y <= 1.85 && loadScene.caseRythm.renderer.material.color != Color.gray && loadScene.caseRythm.renderer.material.color != Color.green)
+            {
+                //drag dans le rythm
+                loadScene.caseRythm.audio.clip = this.audio.clip;
+                loadScene.caseRythm.renderer.material.color = Color.green;
+                loadScene.caseRythm.GetComponent<ScriptCaseRythm>().affected = true;
+
+                if (loadScene.imagePisteAssignedRythm != null)
+                    Destroy(loadScene.imagePisteAssignedRythm);
+
+                GameObject imageLoop = prefabsImage;
+                imageLoop.GetComponent<SpriteRenderer>().sprite = this.GetComponent<SpriteRenderer>().sprite;
+                GameObject g = Instantiate(imageLoop, new Vector3(0, (float)-0.35, 0), Quaternion.identity) as GameObject;
+                loadScene.imagePisteAssignedRythm = g;
+            }
             this.transform.position = new Vector3(x, y, 0);
         }
     }
